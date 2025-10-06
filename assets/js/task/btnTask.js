@@ -69,7 +69,29 @@ function createBtnFinishTask(task) {
     return btn;
 }
 
+function createBtnModifTask(task) {
+    let btn = document.createElement("button");
+    btn.textContent = "update";
+    let descriptionOfTask = task.querySelector(".task-description").textContent;
+    btn.addEventListener("click", () => {
+        let input = document.createElement("input");
+        input.value = descriptionOfTask;
 
+        let btnValide = document.createElement("button");
+        btnValide.textContent = "update";
+        let tempTaskInput = document.createElement("article");
+        tempTaskInput.classList.add("task");
+        tempTaskInput.appendChild(input);
+        tempTaskInput.appendChild(btnValide);
+        task.replaceWith(tempTaskInput);
+        input.focus();
+
+        btnValide.addEventListener("click",() => {
+            tempTaskInput.replaceWith(createTask("article",input.value));
+        });
+    });
+    return btn;
+}
 
 const taskList = document.getElementById("task-list");
 document.body.appendChild(createBtnAddTask(taskList,"article"));

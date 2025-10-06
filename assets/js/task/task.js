@@ -24,10 +24,15 @@ function createTask( htmlElement,taskDescription) {
     let btnFinishTask = createBtnFinishTask(taskContainer);
     spanTaskAction.appendChild(btnFinishTask);
 
+    
     //assemblage des elements
     taskContainer.appendChild(spanTaskDescription);
     taskContainer.appendChild(spanTaskAction);
-
+    
+    //bouton modif task
+    let btnModifTask = createBtnModifTask(taskContainer);
+    spanTaskAction.appendChild(btnModifTask);
+    
     return taskContainer;
 }
 
