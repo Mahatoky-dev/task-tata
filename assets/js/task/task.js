@@ -11,8 +11,14 @@ function createTask( htmlElement,taskDescription) {
 
     //ajout des action possible sur le task
     let spanTaskAction = document.createElement("span");
+
+    //suppression de l'element
     let btnSup = createBtnSupTask(taskContainer);
     spanTaskAction.appendChild(btnSup);
+
+    //ajout de sous task 
+    let btnAddSousTask = createBtnAppendTaskChild(taskContainer,"section","article");
+    spanTaskAction.appendChild(btnAddSousTask);
 
     //assemblage des elements
     taskContainer.appendChild(spanTaskDescription);

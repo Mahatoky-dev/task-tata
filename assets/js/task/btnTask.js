@@ -23,6 +23,22 @@ function createBtnAddTask(taskList, htmlElement) {
     return btnAddTask;
 }
 
+function createBtnAppendTaskChild(task,htmlElementOfTaskList,htmlElementOfSousTask) {
+    let btnAddSousTask = document.createElement("button");
+    btnAddSousTask.textContent = "adst";
+    let sousTaskList =  task.querySelector("task-list");
+    if(sousTaskList == null) {
+        sousTaskList = createListOfTask(htmlElementOfTaskList);
+    }
+    task.appendChild(sousTaskList);
+
+    btnAddSousTask.addEventListener("click",e=> {
+        taskAppendByUserFromInput(task,htmlElementOfSousTask);
+    });
+
+    return btnAddSousTask;
+}
+
 //demandé a l'utilisateur d'entrer le nouveau task qu'il veut insert 
 //task list et le conteneur de toute les tasks
 function taskAppendByUserFromInput(taskList,htmlElement) {
