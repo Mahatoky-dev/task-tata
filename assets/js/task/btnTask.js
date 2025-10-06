@@ -16,26 +16,30 @@ function createBtnAddTask(taskList, htmlElement) {
     btnAddTask.textContent = "add";
 
     btnAddTask.addEventListener("click" ,e => {
-        createInputRecupTaskTemp();
+        taskAppendByUserFromInput(taskList,htmlElement);
     })
     //cree temporairement l'input qui va permetre a l'utilisateur d'enter le task
-    function createInputRecupTaskTemp() {
-        let inputContainer = document.createElement(htmlElement);
-        inputContainer.classList.add("task");
-        let input = document.createElement("input");
-        let btnValide = document.createElement("button");
-        btnValide.textContent = "validé";
-        
-        btnValide.addEventListener("click", e => {
-            taskList.lastChild.replaceWith(createTask(htmlElement,input.value));
-        });
-
-        inputContainer.appendChild(input);
-        inputContainer.appendChild(btnValide);
-        taskList.appendChild(inputContainer);
-    }
 
     return btnAddTask;
+}
+
+//demandé a l'utilisateur d'entrer le nouveau task qu'il veut insert 
+//task list et le conteneur de toute les tasks
+function taskAppendByUserFromInput(taskList,htmlElement) {
+    let inputContainer = document.createElement(htmlElement);
+    inputContainer.classList.add("task");
+    let input = document.createElement("input");
+    let btnValide = document.createElement("button");
+    btnValide.textContent = "validé";
+    
+    btnValide.addEventListener("click", e => {
+        taskList.lastChild.replaceWith(createTask(htmlElement,input.value));
+    });
+    
+    inputContainer.appendChild(input);
+    inputContainer.appendChild(btnValide);
+    taskList.appendChild(inputContainer);
+    input.focus();
 }
 
 const taskList = document.getElementById("task-list");
