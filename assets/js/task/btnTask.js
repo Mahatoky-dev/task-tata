@@ -58,5 +58,18 @@ function taskAppendByUserFromInput(taskList,htmlElement) {
     input.focus();
 }
 
+//creation d'un bouton permetant de mettre une task en terminé
+//task est l'element que le bouton peut terminé
+function createBtnFinishTask(task) {
+    let btn = document.createElement("button");
+    btn.textContent = "ok";
+    btn.addEventListener("click", () => {
+        finishTask(task);
+    });
+    return btn;
+}
+
+
+
 const taskList = document.getElementById("task-list");
 document.body.appendChild(createBtnAddTask(taskList,"article"));

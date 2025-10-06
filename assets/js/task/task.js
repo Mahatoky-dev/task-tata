@@ -20,6 +20,10 @@ function createTask( htmlElement,taskDescription) {
     let btnAddSousTask = createBtnAppendTaskChild(taskContainer,"section","article");
     spanTaskAction.appendChild(btnAddSousTask);
 
+    //bouton finish task
+    let btnFinishTask = createBtnFinishTask(taskContainer);
+    spanTaskAction.appendChild(btnFinishTask);
+
     //assemblage des elements
     taskContainer.appendChild(spanTaskDescription);
     taskContainer.appendChild(spanTaskAction);
@@ -32,4 +36,8 @@ function createListOfTask(htmlElement) {
     let element = document.createElement(htmlElement);
     element.classList.add("task-list");
     return element;
+}
+
+function finishTask(task) {
+    task.classList.toggle("text-decoration-line-through");
 }
