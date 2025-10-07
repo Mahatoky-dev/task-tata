@@ -15,25 +15,27 @@ function createBtnAddTask(taskList, htmlElement) {
     let btnAddTask = document.createElement("button");
     btnAddTask.textContent = "add";
 
-    btnAddTask.addEventListener("click" ,e => {
-        taskAppendByUserFromInput(taskList,htmlElement);
+    btnAddTask.addEventListener("click", e => {
+        taskAppendByUserFromInput(taskList, htmlElement);
     })
     //cree temporairement l'input qui va permetre a l'utilisateur d'enter le task
 
     return btnAddTask;
 }
 
-function createBtnAppendTaskChild(task,htmlElementOfTaskList,htmlElementOfSousTask) {
+function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSousTask) {
     let btnAddSousTask = document.createElement("button");
     btnAddSousTask.textContent = "adst";
-    let sousTaskList =  task.querySelector("task-list");
-    if(sousTaskList == null) {
-        sousTaskList = createListOfTask(htmlElementOfTaskList);
-    }
-    task.appendChild(sousTaskList);
+    let classNameOfListTask = "task-list";
 
-    btnAddSousTask.addEventListener("click",e=> {
-        taskAppendByUserFromInput(task,htmlElementOfSousTask);
+    btnAddSousTask.addEventListener("click", e => {
+        let sousTaskList = task.querySelector("." + classNameOfListTask);
+        if (sousTaskList == null) {
+            sousTaskList = createListOfTask(htmlElementOfTaskList,classNameOfListTask);
+            task.appendChild(sousTaskList);
+            console.log("sousTaskList est null");
+        }
+        taskAppendByUserFromInput(sousTaskList, htmlElementOfSousTask);
     });
 
     return btnAddSousTask;
@@ -41,17 +43,17 @@ function createBtnAppendTaskChild(task,htmlElementOfTaskList,htmlElementOfSousTa
 
 //demandé a l'utilisateur d'entrer le nouveau task qu'il veut insert 
 //task list et le conteneur de toute les tasks
-function taskAppendByUserFromInput(taskList,htmlElement) {
+function taskAppendByUserFromInput(taskList, htmlElement) {
     let inputContainer = document.createElement(htmlElement);
     inputContainer.classList.add("task");
     let input = document.createElement("input");
     let btnValide = document.createElement("button");
     btnValide.textContent = "validé";
-    
+
     btnValide.addEventListener("click", e => {
-        taskList.lastChild.replaceWith(createTask(htmlElement,input.value));
+        taskList.lastChild.replaceWith(createTask(htmlElement, input.value));
     });
-    
+
     inputContainer.appendChild(input);
     inputContainer.appendChild(btnValide);
     taskList.appendChild(inputContainer);
@@ -86,12 +88,12 @@ function createBtnModifTask(task) {
         task.replaceWith(tempTaskInput);
         input.focus();
 
-        btnValide.addEventListener("click",() => {
-            tempTaskInput.replaceWith(createTask("article",input.value));
+        btnValide.addEventListener("click", () => {
+            tempTaskInput.replaceWith(createTask("article", input.value));
         });
     });
     return btn;
 }
 
 const taskList = document.getElementById("task-list");
-document.body.appendChild(createBtnAddTask(taskList,"article"));
+document.body.appendChild(createBtnAddTask(taskList, "article"));

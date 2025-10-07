@@ -32,14 +32,15 @@ function createTask( htmlElement,taskDescription) {
     //bouton modif task
     let btnModifTask = createBtnModifTask(taskContainer);
     spanTaskAction.appendChild(btnModifTask);
+    //modifOnDoubleClic(taskContainer);
     
     return taskContainer;
 }
 
 //cree un element pour stoquer la liste des task
-function createListOfTask(htmlElement) {
+function createListOfTask(htmlElement,classNameOfListTask) {
     let element = document.createElement(htmlElement);
-    element.classList.add("task-list");
+    element.classList.add(classNameOfListTask);
     return element;
 }
 

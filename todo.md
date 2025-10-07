@@ -23,11 +23,21 @@ une aplis permetant de cree un todo mais aussi de faire un pomodoro.
     - [ok] creation de fonction createur de bt ok
     - [ok] mettre le btn ok dans les action de la tache
 
-- permetre la modification d'une tache
-    - fonction pour cree le bouton modif
-        - quand on clic sur modif , le contenu du task va etre transmi dans une placeload d'un input quand l'input est validé , le contenu change a celui qui a ete modifeir
-            - cree l'input avec le contenu du text en plasload
-            - cree un bouton update
-            - ajouté un listner a upda te 
-                 - lors du clique c'est le contenu de l'input qui va etre comme task
-    - ajout du btn modif dans task
+- [ok] permetre la modification d'une tache
+    - [ok] fonction pour cree le bouton modif
+        - [ok] quand on clic sur modif , le contenu du task va etre transmi dans une placeload d'un input quand l'input est validé , le contenu change a celui qui a ete modifeir
+            - [ok] cree l'input avec le contenu du text en plasload
+            - [ok] cree un bouton update
+            - [ok] ajouté un listner a upda te 
+            - [ok] lors du clique c'est le contenu de l'input qui va etre comme task
+    - [ok] ajout du btn modif dans task
+
+### bug : quand on modifie puis qu'on valide les modificatjon d' une task qui a des task fille , les tasque fille disparaise , ce qui est normal car on a remplace le task directement par l'input lors d'un modife . 
+    => une soulution posible est de stoquer le contenu principale de la task dans une article precise . et quand on modifie , c'est cette contenu pricipale qui est transforme en input mais pas le task completement.
+    
+- la modification se fera maintenant en double cliquant sur le task
+- lors de la creation du task :
+    - on va ajouté le listner qui va mermetre la modification du contenu
+        - la fonction qui va ajouté le listner va :
+            - identifier le double clic sur le task
+            - faire les meme action que le bouton lors du double clique.
