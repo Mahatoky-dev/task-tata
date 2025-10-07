@@ -32,18 +32,23 @@ une aplis permetant de cree un todo mais aussi de faire un pomodoro.
             - [ok] lors du clique c'est le contenu de l'input qui va etre comme task
     - [ok] ajout du btn modif dans task
 
-### bug : quand on modifie puis qu'on valide les modificatjon d' une task qui a des task fille , les tasque fille disparaise , ce qui est normal car on a remplace le task directement par l'input lors d'un modife . 
+### bug : quand on modifie puis qu'on valide les modificatjon d' une task qui a des task fille , les tasque fille disparaise , ce qui est normal car on a remplace le task directement par l'input lors d'un modife . **fixé**
     => une soulution posible est de stoquer le contenu principale de la task dans une article precise . et quand on modifie , c'est cette contenu pricipale qui est transforme en input mais pas le task completement.
 
     on va ajouté une header a la task :
     cette header va contenir toute les info de base de la task comme :
-        - la description 
-        - les action
+        - [ok] la description 
+        - [ok] les action
     lors de la modif de cette tache , c'est cette header qui va etre remplacé par l'input.
     et c'est ce qui va etre modifier lors de la modif . cela permetra ne pas touché au task fille.
-- la modification se fera maintenant en double cliquant sur le task
-- lors de la creation du task :
-    - on va ajouté le listner qui va mermetre la modification du contenu
-        - la fonction qui va ajouté le listner va :
-            - identifier le double clic sur le task
-            - faire les meme action que le bouton lors du double clique.
+- [ok] la modification se fera maintenant en double cliquant sur le task
+- [ok] lors de la creation du task :
+    - [ok] on va ajouté le listner qui va mermetre la modification du contenu
+        - [ok] la fonction qui va ajouté le listner va :
+            - [ok] identifier le double clic sur le task
+            - [ok] faire les meme action que le bouton lors du double clique.
+
+## lors du modification d'une task on va pas utiliser une bouton mais la touche entrer
+- savgarder dans une fonction la methode de sauvgarde des chagement.
+- enlevé la touche validé dans le changement de texte. dans l'input temp
+- utiliser une event listner keyDown et condition entrer . 

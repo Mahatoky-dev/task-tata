@@ -11,17 +11,16 @@ function modifOnDoubleClic(taskHeader) {
         let input = document.createElement("input");
         input.value = descriptionOfTask.textContent;
 
-        let btnValide = document.createElement("button");
-        btnValide.textContent = "update";
         let tempTaskInput = document.createElement("article");
         tempTaskInput.appendChild(input);
-        tempTaskInput.appendChild(btnValide);
         taskHeader.replaceWith(tempTaskInput);
         input.focus();
 
-        btnValide.addEventListener("click", () => {
-            descriptionOfTask.textContent = input.value;
-            tempTaskInput.replaceWith(taskHeader);
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                descriptionOfTask.textContent = input.value;
+                tempTaskInput.replaceWith(taskHeader);
+            }
         });
     }
 }
