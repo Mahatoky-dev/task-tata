@@ -71,25 +71,25 @@ function createBtnFinishTask(task) {
     return btn;
 }
 
-function createBtnModifTask(task) {
+function createBtnModifTask(taskHeader) {
     let btn = document.createElement("button");
     btn.textContent = "update";
-    let descriptionOfTask = task.querySelector(".task-description").textContent;
+    let descriptionOfTask = taskHeader.querySelector(".task-description");
     btn.addEventListener("click", () => {
         let input = document.createElement("input");
-        input.value = descriptionOfTask;
+        input.value = descriptionOfTask.textContent;
 
         let btnValide = document.createElement("button");
         btnValide.textContent = "update";
         let tempTaskInput = document.createElement("article");
-        tempTaskInput.classList.add("task");
         tempTaskInput.appendChild(input);
         tempTaskInput.appendChild(btnValide);
-        task.replaceWith(tempTaskInput);
+        taskHeader.replaceWith(tempTaskInput);
         input.focus();
 
         btnValide.addEventListener("click", () => {
-            tempTaskInput.replaceWith(createTask("article", input.value));
+            descriptionOfTask.textContent = input.value;
+            tempTaskInput.replaceWith(taskHeader);
         });
     });
     return btn;

@@ -4,6 +4,10 @@ function createTask( htmlElement,taskDescription) {
     let taskContainer = document.createElement(htmlElement);
     taskContainer.classList.add("task");
 
+    //header de la task qui va contenir les informations de base et action sur la task
+    let taskHeader = document.createElement("section");
+    taskHeader.classList.add("task-header");
+
     //descripion principal du task
     let spanTaskDescription = document.createElement("span");
     spanTaskDescription.classList.add("task-description");
@@ -24,15 +28,19 @@ function createTask( htmlElement,taskDescription) {
     let btnFinishTask = createBtnFinishTask(taskContainer);
     spanTaskAction.appendChild(btnFinishTask);
 
-    
+    //ajout des composant dans header 
+
     //assemblage des elements
-    taskContainer.appendChild(spanTaskDescription);
-    taskContainer.appendChild(spanTaskAction);
+    taskHeader.appendChild(spanTaskDescription);
+    taskHeader.appendChild(spanTaskAction);
     
     //bouton modif task
-    let btnModifTask = createBtnModifTask(taskContainer);
-    spanTaskAction.appendChild(btnModifTask);
+    let btnModifTask = createBtnModifTask(taskHeader);
+    taskHeader.appendChild(btnModifTask);
     //modifOnDoubleClic(taskContainer);
+
+    //ajout du taskHeader dans le task principal
+    taskContainer.appendChild(taskHeader);
     
     return taskContainer;
 }

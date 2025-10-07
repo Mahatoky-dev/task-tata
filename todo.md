@@ -34,7 +34,13 @@ une aplis permetant de cree un todo mais aussi de faire un pomodoro.
 
 ### bug : quand on modifie puis qu'on valide les modificatjon d' une task qui a des task fille , les tasque fille disparaise , ce qui est normal car on a remplace le task directement par l'input lors d'un modife . 
     => une soulution posible est de stoquer le contenu principale de la task dans une article precise . et quand on modifie , c'est cette contenu pricipale qui est transforme en input mais pas le task completement.
-    
+
+    on va ajouté une header a la task :
+    cette header va contenir toute les info de base de la task comme :
+        - la description 
+        - les action
+    lors de la modif de cette tache , c'est cette header qui va etre remplacé par l'input.
+    et c'est ce qui va etre modifier lors de la modif . cela permetra ne pas touché au task fille.
 - la modification se fera maintenant en double cliquant sur le task
 - lors de la creation du task :
     - on va ajouté le listner qui va mermetre la modification du contenu
