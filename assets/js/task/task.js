@@ -35,9 +35,9 @@ function createTask( htmlElement,taskDescription) {
     taskHeader.appendChild(spanTaskAction);
     
     //bouton modif task
-    let btnModifTask = createBtnModifTask(taskHeader);
-    taskHeader.appendChild(btnModifTask);
-    //modifOnDoubleClic(taskContainer);
+    // let btnModifTask = createBtnModifTask(taskHeader);
+    // taskHeader.appendChild(btnModifTask);
+    modifOnDoubleClic(taskHeader);
 
     //ajout du taskHeader dans le task principal
     taskContainer.appendChild(taskHeader);

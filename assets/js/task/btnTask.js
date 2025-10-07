@@ -71,6 +71,7 @@ function createBtnFinishTask(task) {
     return btn;
 }
 
+// taskHeder est le header de la task , qui contien les info du task
 function createBtnModifTask(taskHeader) {
     let btn = document.createElement("button");
     btn.textContent = "update";
