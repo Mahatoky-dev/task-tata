@@ -28,7 +28,6 @@ function modiftask(task) {
             tempTaskInput.replaceWith(taskHeader);
             e.stopPropagation();
             task.focus();
-            console.log("event 2");
         }
     });
 
@@ -43,9 +42,19 @@ function modiftask(task) {
 function appendChildOnFocusAndEnter(task) {
     task.tabIndex = 0;
     task.addEventListener("keydown", event => {
-        if (event.key === "Enter" && task === document.activeElement) {
+        if (event.key === "Enter" && !event.ctrlKey && task === document.activeElement) {
             appendTaskAfter(task, task.nodeName);
-            console.log("event 1");
+        }
+    })
+}
+
+//fonction pour cajouté un sous task lors du clique sur le touche ctrl et enter
+function appendChildOnTabAndEnter(task) {
+    task.addEventListener("keydown",(e) => {
+        e.stopPropagation();
+        //e.preventDefault();
+        if(e.ctrlKey && e.key === "Enter") {
+            appendChildByUser(task,"task-list","article");
         }
     })
 }

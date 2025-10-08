@@ -8,6 +8,18 @@ function createTask( htmlElement,taskDescription) {
     let taskHeader = document.createElement("section");
     taskHeader.classList.add("task-header");
 
+    //ajout du statut du task
+    let spanStatut = document.createElement("span");
+    spanStatut.classList.add("task-statut");
+    
+    //creation de l'image de base d'une statu 
+    let imgStat = document.createElement("img");
+    imgStat.className = "img-statut";
+    imgStat.src = "assets/icone/non-ok.png";
+
+    spanStatut.appendChild(imgStat);
+    taskHeader.appendChild(spanStatut);
+
     //descripion principal du task
     let spanTaskDescription = document.createElement("span");
     spanTaskDescription.classList.add("task-description");
@@ -20,27 +32,23 @@ function createTask( htmlElement,taskDescription) {
     let btnSup = createBtnSupTask(taskContainer,"btn-sup");
     spanTaskAction.appendChild(btnSup);
 
-    //ajout de sous task 
-    let btnAddSousTask = createBtnAppendTaskChild(taskContainer,"section","article","add-sous-task");
-    spanTaskAction.appendChild(btnAddSousTask);
-
     //bouton finish task
-    let btnFinishTask = createBtnFinishTask(taskContainer);
+    let btnFinishTask = createBtnFinishTaskWithIcone(taskContainer);
     spanTaskAction.appendChild(btnFinishTask);
 
-    //ajout des composant dans header 
+    spanTaskAction.appendChild(createBtnAppendTaskChild(taskContainer,"section","task-list"));
 
     //assemblage des elements
     taskHeader.appendChild(spanTaskDescription);
     taskHeader.appendChild(spanTaskAction);
     
-    //bouton modif task
-    // let btnModifTask = createBtnModifTask(taskHeader);
-    // taskHeader.appendChild(btnModifTask);
     
     //ajout du taskHeader dans le task principal
     taskContainer.appendChild(taskHeader);
     modifOnDoubleClicTaskHeader(taskContainer);
+
+    //checker le toche ctrl tab pour l'ajout de child
+    appendChildOnTabAndEnter(taskContainer);
     appendChildOnFocusAndEnter(taskContainer);
     
     return taskContainer;
@@ -55,6 +63,13 @@ function createListOfTask(htmlElement,classNameOfListTask) {
 
 function finishTask(task) {
     task.classList.toggle("text-decoration-line-through");
+    let imgStatut = task.getElementsByClassName("img-statut")[0];
+    console.log(imgStatut.src);
+    if(imgStatut.getAttribute("src") === "assets/icone/non-ok.png") {
+        imgStatut.src = "assets/icone/ok.png";
+    } else {
+        imgStatut.src = "assets/icone/non-ok.png";
+    }
 }
 
 //ajotué une tache brother a une task , une task de meme niveau
@@ -75,4 +90,13 @@ function taskAppendByUserFromInput(taskList, htmlElement) {
     let newTask = createTask(htmlElement,"");
     taskList.appendChild(newTask);
     modiftask(newTask);
+}
+
+function appendChildByUser(task,classNameOfListTask,htmlElementOfTaskList) {
+    let sousTaskList = task.querySelector("." + classNameOfListTask);
+        if (sousTaskList == null) {
+            sousTaskList = createListOfTask(htmlElementOfTaskList,classNameOfListTask);
+            task.appendChild(sousTaskList);
+        }
+        taskAppendByUserFromInput(sousTaskList,htmlElementOfTaskList);
 }
