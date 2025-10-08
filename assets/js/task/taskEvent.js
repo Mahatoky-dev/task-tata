@@ -2,7 +2,8 @@
 //task : c'est le tache a modifier lors du double clique
 function modifOnDoubleClicTaskHeader(task) {
     let taskHeader = task.querySelector(".task-header");
-    taskHeader.addEventListener("dblclick", () => {
+    taskHeader.addEventListener("dblclick", e => {
+        e.stopPropagation();
         modiftask(task);
     });
 }
@@ -15,27 +16,26 @@ function modiftask(task) {
     let input = document.createElement("input");
     input.value = descriptionOfTask.textContent;
 
-    let tempTaskInput = document.createElement("article");
-    tempTaskInput.appendChild(input);
-    taskHeader.replaceWith(tempTaskInput);
+    descriptionOfTask.replaceWith(input);
     input.focus();
 
     //valider lorsque l'element pert le focus ou qand la touche entrer est taper
     input.addEventListener("keydown", (e) => {
+        e.stopPropagation();
         if (e.key === "Enter" && input == document.activeElement) {
             task.inModif = true;
             descriptionOfTask.textContent = input.value;
-            tempTaskInput.replaceWith(taskHeader);
+            input.replaceWith(descriptionOfTask);
             e.stopPropagation();
             task.focus();
         }
     });
 
-    input.addEventListener("blur", () => {
-        descriptionOfTask.textContent = input.value;
-        tempTaskInput.replaceWith(taskHeader);
+    // input.addEventListener("blur", () => {
+    //     descriptionOfTask.textContent = input.value;
+    //     tempTaskInput.replaceWith(taskHeader);
         
-    });
+    // });
 }
 
 //permetre le focus sur une task

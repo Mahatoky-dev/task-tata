@@ -17,24 +17,24 @@ function createTask( htmlElement,taskDescription) {
     imgStat.className = "img-statut";
     imgStat.src = "assets/icone/non-ok.png";
 
-    spanStatut.appendChild(imgStat);
     taskHeader.appendChild(spanStatut);
-
+    
     //descripion principal du task
     let spanTaskDescription = document.createElement("span");
     spanTaskDescription.classList.add("task-description");
     spanTaskDescription.textContent = taskDescription;
-
+    
     //ajout des action possible sur le task
     let spanTaskAction = document.createElement("span");
-
+    
     //suppression de l'element
     let btnSup = createBtnSupTask(taskContainer,"btn-sup");
     spanTaskAction.appendChild(btnSup);
-
+    
     //bouton finish task
-    let btnFinishTask = createBtnFinishTaskWithIcone(taskContainer);
-    spanTaskAction.appendChild(btnFinishTask);
+    let btnFinishTask = createBtnFinishTaskWithIcone(taskContainer,imgStat);
+    spanStatut.appendChild(btnFinishTask);
+    
 
     spanTaskAction.appendChild(createBtnAppendTaskChild(taskContainer,"section","task-list"));
 

@@ -72,9 +72,10 @@ une aplis permetant de cree un todo mais aussi de faire un pomodoro.
 ## l'ajout de sous tache va se faire par la combinaison de touche tab + enter mais pas par le btn ** ok **  
 
 ## ajout d'icone image mermetant de determiné si le task est terminé
-- ajout d'un span statut qui va stoqué l'icone de statut
-- cree le btn 
-- ajouté une image avec src dans le btn , par defaut l'atribut sera non-ok.png 
-- test
-- creation de fonction chage statu , comme ok.
-- ajouté le btn qui permet de validé si l'e task est non fini ou fini
+- [ok] ajout d'un span statut qui va stoqué l'icone de statut
+- [ok] cree le btn 
+- [ok] ajouté une image avec src dans le btn , par defaut l'atribut sera non-ok.png 
+- [ok] test
+- [ok] creation de fonction chage statu , comme ok.
+- [ok] ajouté le btn qui permet de validé si l'e task est non fini ou fini
+

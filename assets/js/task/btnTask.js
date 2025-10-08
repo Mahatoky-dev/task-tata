@@ -46,9 +46,9 @@ function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSous
 
 //creation d'un bouton permetant de mettre une task en terminé
 //task est l'element que le bouton peut terminé
-function createBtnFinishTaskWithIcone(task) {
+function createBtnFinishTaskWithIcone(task,contentBtn) {
     let btn = document.createElement("button");
-    btn.textContent = "ok";
+    btn.appendChild(contentBtn);
     btn.addEventListener("click", () => {
         finishTask(task);
     });
