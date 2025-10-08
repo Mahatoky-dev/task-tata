@@ -17,11 +17,11 @@ function createTask( htmlElement,taskDescription) {
     let spanTaskAction = document.createElement("span");
 
     //suppression de l'element
-    let btnSup = createBtnSupTask(taskContainer);
+    let btnSup = createBtnSupTask(taskContainer,"btn-sup");
     spanTaskAction.appendChild(btnSup);
 
     //ajout de sous task 
-    let btnAddSousTask = createBtnAppendTaskChild(taskContainer,"section","article");
+    let btnAddSousTask = createBtnAppendTaskChild(taskContainer,"section","article","add-sous-task");
     spanTaskAction.appendChild(btnAddSousTask);
 
     //bouton finish task
@@ -37,10 +37,11 @@ function createTask( htmlElement,taskDescription) {
     //bouton modif task
     // let btnModifTask = createBtnModifTask(taskHeader);
     // taskHeader.appendChild(btnModifTask);
-    modifOnDoubleClic(taskHeader);
-
+    
     //ajout du taskHeader dans le task principal
     taskContainer.appendChild(taskHeader);
+    modifOnDoubleClicTaskHeader(taskContainer);
+    appendChildOnFocusAndEnter(taskContainer);
     
     return taskContainer;
 }
@@ -54,4 +55,31 @@ function createListOfTask(htmlElement,classNameOfListTask) {
 
 function finishTask(task) {
     task.classList.toggle("text-decoration-line-through");
+}
+
+//ajotué une tache brother a une task , une task de meme niveau
+function appendBrotherTask(task) {
+    let containerListTask = task.parentElement;
+    console.log(task.nodeName.toLowerCase());
+    taskAppendByUserFromInput(containerListTask,task.nodeName.toLowerCase());
+}
+
+//demandé a l'utilisateur d'entrer le nouveau task qu'il veut insert 
+//task list et le conteneur de toute les tasks
+function taskAppendByUserFromInput(taskList, htmlElement) {
+    let inputContainer = document.createElement(htmlElement);
+    inputContainer.classList.add("task");
+    let input = document.createElement("input");
+    input.id = "input-task";
+    let btnValide = document.createElement("button");
+    btnValide.textContent = "validé";
+
+    btnValide.addEventListener("click", e => {
+        taskList.lastChild.replaceWith(createTask(htmlElement, input.value));
+    });
+
+    inputContainer.appendChild(input);
+    inputContainer.appendChild(btnValide);
+    taskList.appendChild(inputContainer);
+    input.focus();
 }

@@ -1,7 +1,8 @@
 // task : est l'element que le btn va suprimé
-function createBtnSupTask(task) {
+function createBtnSupTask(task,btnClass) {
     let btnSupTask = document.createElement("button");
     btnSupTask.textContent = "sup";
+    btnSupTask.classList.add(btnClass);
     //suprimé le task si le bouton est cliqué
     btnSupTask.addEventListener("click", (e) => {
         task.remove();
@@ -11,9 +12,10 @@ function createBtnSupTask(task) {
 }
 //taskList est l'element qui contient toute les task
 //htmlElement est le type de tasque ajouté (article , section ...)
-function createBtnAddTask(taskList, htmlElement) {
+function createBtnAddTask(taskList, htmlElement,btnClass) {
     let btnAddTask = document.createElement("button");
     btnAddTask.textContent = "add";
+    btnAddTask.classList.add(btnClass);
 
     btnAddTask.addEventListener("click", e => {
         taskAppendByUserFromInput(taskList, htmlElement);
@@ -23,8 +25,9 @@ function createBtnAddTask(taskList, htmlElement) {
     return btnAddTask;
 }
 
-function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSousTask) {
+function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSousTask,btnClass) {
     let btnAddSousTask = document.createElement("button");
+    btnAddSousTask.classList.add(btnClass);
     btnAddSousTask.textContent = "adst";
     let classNameOfListTask = "task-list";
 
@@ -41,24 +44,6 @@ function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSous
     return btnAddSousTask;
 }
 
-//demandé a l'utilisateur d'entrer le nouveau task qu'il veut insert 
-//task list et le conteneur de toute les tasks
-function taskAppendByUserFromInput(taskList, htmlElement) {
-    let inputContainer = document.createElement(htmlElement);
-    inputContainer.classList.add("task");
-    let input = document.createElement("input");
-    let btnValide = document.createElement("button");
-    btnValide.textContent = "validé";
-
-    btnValide.addEventListener("click", e => {
-        taskList.lastChild.replaceWith(createTask(htmlElement, input.value));
-    });
-
-    inputContainer.appendChild(input);
-    inputContainer.appendChild(btnValide);
-    taskList.appendChild(inputContainer);
-    input.focus();
-}
 
 //creation d'un bouton permetant de mettre une task en terminé
 //task est l'element que le bouton peut terminé
@@ -96,5 +81,3 @@ function createBtnModifTask(taskHeader) {
     return btn;
 }
 
-const taskList = document.getElementById("task-list");
-document.body.appendChild(createBtnAddTask(taskList, "article"));
