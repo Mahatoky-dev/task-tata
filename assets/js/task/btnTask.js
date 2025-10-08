@@ -36,7 +36,6 @@ function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSous
         if (sousTaskList == null) {
             sousTaskList = createListOfTask(htmlElementOfTaskList,classNameOfListTask);
             task.appendChild(sousTaskList);
-            console.log("sousTaskList est null");
         }
         taskAppendByUserFromInput(sousTaskList, htmlElementOfSousTask);
     });

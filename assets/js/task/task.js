@@ -60,26 +60,19 @@ function finishTask(task) {
 //ajotué une tache brother a une task , une task de meme niveau
 function appendBrotherTask(task) {
     let containerListTask = task.parentElement;
-    console.log(task.nodeName.toLowerCase());
     taskAppendByUserFromInput(containerListTask,task.nodeName.toLowerCase());
+}
+
+function appendTaskAfter(task,htmlElementOfTask) {
+    let newTask = createTask(htmlElementOfTask,"");
+    task.after(newTask);
+    modiftask(newTask);
 }
 
 //demandé a l'utilisateur d'entrer le nouveau task qu'il veut insert 
 //task list et le conteneur de toute les tasks
 function taskAppendByUserFromInput(taskList, htmlElement) {
-    let inputContainer = document.createElement(htmlElement);
-    inputContainer.classList.add("task");
-    let input = document.createElement("input");
-    input.id = "input-task";
-    let btnValide = document.createElement("button");
-    btnValide.textContent = "validé";
-
-    btnValide.addEventListener("click", e => {
-        taskList.lastChild.replaceWith(createTask(htmlElement, input.value));
-    });
-
-    inputContainer.appendChild(input);
-    inputContainer.appendChild(btnValide);
-    taskList.appendChild(inputContainer);
-    input.focus();
+    let newTask = createTask(htmlElement,"");
+    taskList.appendChild(newTask);
+    modiftask(newTask);
 }

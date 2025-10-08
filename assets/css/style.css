@@ -3,5 +3,7 @@
     margin-left: 35px;
     padding: 10px;
     margin: 10px ;
-    
+}
+.task:focus {
+    background-color: #724f4ff1;
 }

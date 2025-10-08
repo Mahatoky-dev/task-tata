@@ -49,6 +49,22 @@ une aplis permetant de cree un todo mais aussi de faire un pomodoro.
             - [ok] faire les meme action que le bouton lors du double clique.
 
 ## lors du modification d'une task on va pas utiliser une bouton mais la touche entrer
-- savgarder dans une fonction la methode de sauvgarde des chagement.
-- enlevé la touche validé dans le changement de texte. dans l'input temp
-- utiliser une event listner keyDown et condition entrer . 
+- [ok] savgarder dans une fonction la methode de sauvgarde des chagement.
+- [ok] enlevé la touche validé dans le changement de texte. dans l'input temp
+- [ok] utiliser une event listner keyDown et condition entrer . 
+
+## lors de l'ajout d'une task on voudrais ne pas affiché le bouton validé mais tout de suite pouvoir validé avec la touche entré
+- [ok] racuperer l'input d'ajout de task fille 
+- [ok] cree une task sans contenu
+- [ok] utilisser la fonction de modification de task
+
+## la nouvelle task , ajouté via touche entrer sur une task , va se faire apres le task , mais pas a la fin de la liste de task.
+- [ok] identifier la fonction qui ecoute a touche enter
+- [ok] cree fonction ajoutTaskAfter(task)
+
+## lorsqu'on valide une task apres modificaton ou ajout , il va avoir le focus
+- identifier la fonction modif task  
+- donné le focus au task 
+    ## bug quand on ajoute une task , l'input d'une nouvelle task ouvre directement
+    cause bulbbing
+    fixé par stopBulbbing
