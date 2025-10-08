@@ -16,13 +16,19 @@ function createTask( htmlElement,taskDescription) {
     let imgStat = document.createElement("img");
     imgStat.className = "img-statut";
     imgStat.src = "assets/icone/non-ok.png";
-
-    taskHeader.appendChild(spanStatut);
     
     //descripion principal du task
     let spanTaskDescription = document.createElement("span");
     spanTaskDescription.classList.add("task-description");
     spanTaskDescription.textContent = taskDescription;
+
+    //centenu principale du task
+    let mainDesc = document.createElement("span");
+    mainDesc.className = "task-main-desk";
+
+    mainDesc.appendChild(spanStatut);
+    mainDesc.appendChild(spanTaskDescription);
+    taskHeader.appendChild(mainDesc);
     
     //ajout des action possible sur le task
     let spanTaskAction = document.createElement("span");
@@ -39,7 +45,7 @@ function createTask( htmlElement,taskDescription) {
     spanTaskAction.appendChild(createBtnAppendTaskChild(taskContainer,"btn-append-sous-task"));
 
     //assemblage des elements
-    taskHeader.appendChild(spanTaskDescription);
+    taskHeader.appendChild(mainDesc);
     taskHeader.appendChild(spanTaskAction);
     
     

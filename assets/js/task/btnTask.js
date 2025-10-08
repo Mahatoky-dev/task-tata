@@ -41,6 +41,7 @@ function createBtnAppendTaskChild(task,btnClass) {
 //task est l'element que le bouton peut terminé
 function createBtnFinishTaskWithIcone(task,contentBtn) {
     let btn = document.createElement("button");
+    btn.classList.add("btn-finish-task");
     btn.appendChild(contentBtn);
     btn.addEventListener("click", () => {
         finishTask(task);

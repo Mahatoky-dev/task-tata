@@ -23,7 +23,6 @@ function modiftask(task) {
     input.addEventListener("keydown", (e) => {
         e.stopPropagation();
         if (e.key === "Enter" && input == document.activeElement) {
-            task.inModif = true;
             descriptionOfTask.textContent = input.value;
             input.replaceWith(descriptionOfTask);
             e.stopPropagation();
@@ -31,11 +30,11 @@ function modiftask(task) {
         }
     });
 
-    // input.addEventListener("blur", () => {
-    //     descriptionOfTask.textContent = input.value;
-    //     tempTaskInput.replaceWith(taskHeader);
+    input.addEventListener("blur", () => {
+        descriptionOfTask.textContent = input.value;
+        input.replaceWith(descriptionOfTask);
         
-    // });
+    });
 }
 
 //permetre le focus sur une task
