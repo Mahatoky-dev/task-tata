@@ -25,19 +25,12 @@ function createBtnAddTask(taskList, htmlElement,btnClass) {
     return btnAddTask;
 }
 
-function createBtnAppendTaskChild(task, htmlElementOfTaskList, htmlElementOfSousTask,btnClass) {
+function createBtnAppendTaskChild(task,btnClass) {
     let btnAddSousTask = document.createElement("button");
     btnAddSousTask.classList.add(btnClass);
     btnAddSousTask.textContent = "adst";
-    let classNameOfListTask = "task-list";
-
     btnAddSousTask.addEventListener("click", e => {
-        let sousTaskList = task.querySelector("." + classNameOfListTask);
-        if (sousTaskList == null) {
-            sousTaskList = createListOfTask(htmlElementOfTaskList,classNameOfListTask);
-            task.appendChild(sousTaskList);
-        }
-        taskAppendByUserFromInput(sousTaskList, htmlElementOfSousTask);
+        appendChildByUser(task,"task-list","article")
     });
 
     return btnAddSousTask;

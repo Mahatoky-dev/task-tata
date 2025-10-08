@@ -1,10 +1,15 @@
 .task {
     border: 2px darkblue solid;
-    margin-left: 35px;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px;
-    margin: 10px ;
     /* transition: all 0.3s ease; */
 }
 .task:focus {
     background-color: #724f4ff1;
+}
+
+.task-list {
+    margin-bottom: 20px;
 }

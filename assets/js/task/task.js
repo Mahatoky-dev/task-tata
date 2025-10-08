@@ -36,7 +36,7 @@ function createTask( htmlElement,taskDescription) {
     spanStatut.appendChild(btnFinishTask);
     
 
-    spanTaskAction.appendChild(createBtnAppendTaskChild(taskContainer,"section","task-list"));
+    spanTaskAction.appendChild(createBtnAppendTaskChild(taskContainer,"btn-append-sous-task"));
 
     //assemblage des elements
     taskHeader.appendChild(spanTaskDescription);
